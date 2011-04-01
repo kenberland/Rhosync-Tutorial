@@ -1,0 +1,29 @@
+require File.join(File.dirname(__FILE__),'..','spec_helper')
+
+describe "Picture" do
+  it_should_behave_like "SpecHelper"
+  
+  before(:each) do
+    setup_test_for Picture,'testuser'
+    @myData = {"caption"=>"Acme", "industry"=>"Electronics"}
+  end
+  
+  it "should process Picture create" do
+    new_id = test_create(@myData)
+    create_errors.should == {}
+    md[new_id].should == @myData
+  end
+  
+  it "should process Picture query" do
+    test_create(@myData)
+    test_query.size.should > 0
+  end
+  
+  it "should process Picture update" do
+    pending
+  end
+  
+  it "should process Picture delete" do
+    pending
+  end
+end

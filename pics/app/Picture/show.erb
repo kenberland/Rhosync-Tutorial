@@ -1,0 +1,25 @@
+<div class="pageTitle">
+  <h1><%= @picture.caption %></h1>
+</div>
+
+<div class="toolbar">
+  <div class="leftItem backButton">
+    <a href="<%= url_for :action => :index %>">Back</a>
+  </div>
+  <div class="rightItem regularButton">
+    <a href="<%= url_for :action => :edit, :id => @picture.object %>">Edit</a>
+  </div>
+</div>
+
+<div class="content">
+  <ul>
+    
+        <li>
+          <div class="itemLabel">Caption</div>
+          <div class="itemValue"><%= @picture.caption.nil? ? 'No Caption' : @picture.caption %></div>
+        </li>
+		
+		<img src="<%=Rho::RhoApplication::get_blob_path(@picture.image_uri)%>" width='300px'></img>
+    
+  </ul>
+</div>

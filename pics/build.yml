@@ -1,0 +1,21 @@
+sdk: "/home/ken/.gem/gems/gems/rhodes-2.3.2"
+sdkversion: 2.3.2
+name: pics
+capabilities:
+- camera
+version: 1.0
+vendor: rhomobile
+build: debug
+bbver: 4.6
+wmsdk: "Windows Mobile 6 Professional SDK (ARMV4I)"
+applog: rholog.txt
+iphone:
+  configuration: Debug
+  sdk: iphonesimulator4.0
+  provisionprofile:
+  codesignidentity:
+  entitlements:
+  BundleIdentifier: com.rhomobile.pics
+  BundleURLScheme: pics
+
+extensions: ["json", "another-extension"]

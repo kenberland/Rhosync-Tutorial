@@ -1,0 +1,5 @@
+sadd user:ken:clients 6f0da52e87f3405c97966970b1a2e9cf
+set client:6f0da52e87f3405c97966970b1a2e9cf:rho__id 6f0da52e87f3405c97966970b1a2e9cf
+set client:6f0da52e87f3405c97966970b1a2e9cf:user_id ken
+set client:6f0da52e87f3405c97966970b1a2e9cf:app_id application
+
