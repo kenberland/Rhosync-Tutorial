@@ -20,7 +20,7 @@
             <label for="picture[caption]" class="fieldLabel">Caption</label>
             <input type="text" name="picture[caption]" value="<%= @picture.caption %>" <%= placeholder( "Caption" ) %> />
           </li>
-		  
+		  image uri: <%= @picture.image_uri %>
 		  <img src="<%=Rho::RhoApplication::get_blob_path(@picture.image_uri)%>" width='300px'></img>
       
     </ul>

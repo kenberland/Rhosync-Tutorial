@@ -34,9 +34,20 @@ class Picture < SourceAdapter
   end
  
   def create(create_hash,blob=nil)
-    # TODO: Create a new record in your backend data source
+    # Create a new record in your backend data source
     # If your rhodes rhom object contains image/binary data 
     # (has the image_uri attribute), then a blob will be provided
+    
+    # KB: I don't see a blob here, just a path to the file.  Fine.
+
+    unless create_hash["image_uri"].nil?
+      # make sure its a tmp file, /etc/passwd anyone?
+      if create_hash["image_uri"].to_s.start_with?('/tmp')
+        # pass it to the backend as base64 encoded data
+        create_hash["image"] = Base64.encode64(IO.read( create_hash["image_uri"] ) )
+      end
+    end
+
     result = RestClient.post(@base,:picture => create_hash)
     JSON.parse(result)["picture"]["id"].to_s
   end

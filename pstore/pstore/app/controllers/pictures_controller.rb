@@ -1,8 +1,16 @@
 class PicturesController < ApplicationController
+
   # GET /pictures
   # GET /pictures.xml
   def index
+    base = "http://192.168.1.99:3000/"
+
     @pictures = Picture.all
+    @pictures.each do |picture|
+      picture.image_uri = base + "pictures/blob/" + picture.id.to_s
+      # don't show the 64 encoded stuff, no reason.
+      picture.image = ''
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,17 +52,7 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.xml
   def create
-    unless true and params[:picture][:image_uri].nil?
-      # this request has an image, slurp it
-      if params[:picture][:image_uri].starts_with?('/tmp')
-        # make sure its a tmp file, /etc/passwd anyone?
-        params[:picture][:image] = Base64.encode64(IO.read( params[:picture][:image_uri] ) )
-        params[:picture].delete :image_uri
-      end
-    end
-    
     @picture = Picture.new(params[:picture])
-
     respond_to do |format|
       if @picture.save
         format.html { redirect_to(@picture, :notice => 'Picture was successfully created.') }
@@ -98,4 +96,11 @@ class PicturesController < ApplicationController
       format.json  { render :json => { "status" => "ok" } }
     end
   end
+
+  # GET /pictures/blob/1
+  def blob
+    send_data(Base64.decode64(Picture.find( params[:id] ).image), :type=>'image/png', :disposition => 'inline')
+  end
+
+
 end

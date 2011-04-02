@@ -2,6 +2,8 @@ Pstore::Application.routes.draw do
   resources :pictures, :defaults => { :format => 'json' }
   #resources :pictures
 
+  match 'pictures/blob/:id' => 'pictures#blob'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

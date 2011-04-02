@@ -1,1 +1,8 @@
-TODO
+This is a simple tutorial that demonstrates how images (blobs) can be synchronized using Rhosync.
+
+There are three applications:
+
+1) pics: the Rhodes application that runs on the Android simulator;
+2) pics-server: the Rhosync application; and
+3) pstore: a RoR applications that it the backing datastore for pics-server.
+
