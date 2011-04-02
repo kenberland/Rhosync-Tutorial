@@ -3,7 +3,7 @@ require 'rest_client'
 
 class Picture < SourceAdapter
   def initialize(source,credential)
-    @base = 'http://localhost:3000/pictures'
+    @base = 'http://young-night-948.heroku.com/pictures'
     super(source,credential)
   end
  
